@@ -1,4 +1,4 @@
-var arr = ['Image/slide1.jpg', 'Image/slide2.jpg', 'Image/slide3.jpg', 'Image/slide4.jpg', 'Image/slide5.jpg'];
+var arr = ['../Image/slide1.jpg', '../Image/slide2.jpg', '../Image/slide3.jpg', '../Image/slide4.jpg', '../Image/slide5.jpg'];
 var index = 0;
 var a = document.getElementById('slider');
 

@@ -1,0 +1,17 @@
+.tictactoe {
+    width: 300px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  button {
+      width: calc(100% / 3 - 6px);
+      height: 96px;
+      background-color: #ccc;
+      margin: 2px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 700;
+  }
+  

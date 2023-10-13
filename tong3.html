@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <form>
+            <table>
+                <tr>
+                    <td>Ho ten</td>
+                    <td>
+                        <input type="text" id="ten">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input type="text" id="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Số điẹn thoại</td>
+                    <td>
+                        <input type="number" id="sodt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Khoa hoc</td>
+                    <td>
+                        <select id="khoa">
+                            <option hidden></option>
+                            <option value="500">HTML</option>
+                            <option value="800">JS</option>
+                            <option value="1000">PHP</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hoc phi</td>
+                    <td>
+                        <input type="number" id="hoc" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hinh thuc hoc</td>
+                    <td>
+                        <input type="radio" name="" value="2" id="off">Tại trường
+                        <input type="radio" name="" value="1" id="on">Hoc online
+                    </td>
+                </tr>
+                <tr>
+                    <td><button id="send">Dang ky</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript">
+        var ten = document.getElementById("ten")
+        var email = document.getElementById("email")
+        var sodt = document.getElementById("sodt")
+        var khoa = document.getElementById("khoa")
+        var hocphi = document.getElementById("hoc")
+        var off = document.getElementById("hoc")
+        var on = document.getElementById("on")
+
+        //
+
+        khoa.addEventListener("click", function () {
+            if (khoa.value === "500") {
+                hocphi.value = "500"
+            } else if (khoa.value === "800") {
+                hocphi.value = "800"
+            } else {
+                hocphi.value = "1000"
+            }
+        })
+        var tich = ""
+
+        var daTich = false;
+
+        on.addEventListener("click", function () {
+            daTich = true;
+            if (on.checked) {
+                tich = "Học on";
+            } else {
+                tich = ""; // Nếu "Học on" không được tích, đặt giá trị tich về trống
+            }
+            off.checked = false; // Đảm bảo radio button "Tại trường" không được tích khi "Học on" được tích
+        });
+
+        off.addEventListener("click", function () {
+            daTich = true;
+            if (off.checked) {
+                tich = "Tại trường";
+            } else {
+                tich = ""; // Nếu "Tại trường" không được tích, đặt giá trị tich về trống
+            }
+            on.checked = false; // Đảm bảo radio button "Học on" không được tích khi "Tại trường" được tích
+        });
+        function loi() {
+            if (ten.value === "") {
+                alert("chua nhap ten")
+                return true;
+            }
+            if (email.value === "") {
+                alert("chua nhap email")
+                return true;
+            }
+            if (khoa.value === "") {
+                alert("chua chon khoa hoc")
+                return true;
+            }
+            if (sodt.value === "") {
+                alert("chua nhap so dien thoai")
+                return true;
+            }
+            if (hocphi.value === "") {
+                alert("chua chon hoc phi")
+                return true;
+            }
+            if (!daTich) {
+                // Nếu người dùng chưa tích vào bất kỳ radio button nào, tự động tích vào "Tại trường"
+                off.checked = true;
+                tich = "Tại trường";
+            }
+            return false;
+        }
+
+        document.getElementById("send").addEventListener("click", send)
+        function send(e) {
+            e.preventDefault()
+            if (loi()) {
+
+            } else {
+                alert("ten: \n" + ten.value + " email: \n" + email.value + " so dien thoai: " + sodt.value + "khoa hoc: " + hocphi.value + "tich: " + tich)
+            }
+        }
+    </script>
+</body>
+
+</html>
