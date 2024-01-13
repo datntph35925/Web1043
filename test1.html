@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2</title>
+</head>
+<body>
+    <input style="margin: 10px;" type="text" id="ten" placeholder="Nhập tên"><span id="tenError" style="color: red;"></span><br>
+    <input style="margin: 10px;" type="number" id="tuoi" placeholder="Nhập tuổi"><span id="tuoiError" style="color: red;"></span><br>
+    <input style="margin: 10px;" type="text" id="email" placeholder="Nhập Email"><span id="emailError" style="color: red;"></span><br>
+    <input style="margin: 10px;" type="password" id="mKC" placeholder="Nhập mật khẩu cũ"><span id="mKCError" style="color: red;"></span><br>
+    <input style="margin: 10px;" type="password" id="mKM" placeholder="Nhập mật khẩu mới"><span id="mKMError" style="color: red;"></span><br>
+    <input style="margin: 10px;" type="password" id="xNMKm" placeholder="Nhập lại mật khẩu mới"><span id="xNMKmError" style="color: red;"></span><br>
+
+    <!-- Thêm trường input select -->
+    <select style="margin: 10px;" id="gioiTinh">
+        <option value="">Chọn giới tính</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+    </select>
+    <span id="gioiTinhError" style="color: red;"></span><br>
+
+    <!-- Thêm trường input checkbox -->
+    <label style="margin: 10px;"><input type="checkbox" id="nhanThongBao">Nhận thông báo</label>
+    
+    <br>
+
+    <!-- Thêm trường input radio -->
+    <label style="margin: 10px;"><input type="radio" name="thucAn" value="pizza">Pizza</label>
+    <label style="margin: 10px;"><input type="radio" name="thucAn" value="sushi">Sushi</label>
+    <label style="margin: 10px;"><input type="radio" name="thucAn" value="burger">Burger</label>
+    <span id="thucAnError" style="color: red;"></span><br>
+
+    <input style="margin: 10px;" type="button" id="doiMK" value="Đổi mật khẩu">
+    <Script>
+        var ten = document.getElementById("ten");
+        var tuoi = document.getElementById("tuoi");
+        var email = document.getElementById("email");
+        var mKC = document.getElementById("mKC");
+        var mKM = document.getElementById("mKM");
+        var xNMKm = document.getElementById("xNMKm");
+        var gioiTinh = document.getElementById("gioiTinh");
+        var nhanThongBao = document.getElementById("nhanThongBao");
+        var thucAnRadios = document.querySelectorAll('input[name="thucAn"]');
+        var tenError = document.getElementById("tenError");
+        var tuoiError = document.getElementById("tuoiError");
+        var emailError = document.getElementById("emailError");
+        var mKCError = document.getElementById("mKCError");
+        var mKMError = document.getElementById("mKMError");
+        var xNMKmError = document.getElementById("xNMKmError");
+        var gioiTinhError = document.getElementById("gioiTinhError");
+        var thucAnError = document.getElementById("thucAnError");
+
+        document.getElementById("doiMK").addEventListener("click", function () {
+            tenError.textContent = tuoiError.textContent = emailError.textContent = mKCError.textContent = mKMError.textContent = xNMKmError.textContent = gioiTinhError.textContent = thucAnError.textContent = "";
+
+            var hasError = false;
+
+            if (ten.value === "") {
+                tenError.textContent = "Chưa nhập tên";
+                hasError = true;
+            }
+
+            if (tuoi.value === "") {
+                tuoiError.textContent = "Chưa nhập tuổi";
+                hasError = true;
+            }
+
+            if (email.value === "") {
+                emailError.textContent = "Chưa nhập Email";
+                hasError = true;
+            } else if (!isValidEmail(email.value)) {
+                emailError.textContent = "Email không hợp lệ";
+                hasError = true;
+            }
+
+            if (mKC.value === "") {
+                mKCError.textContent = "Chưa nhập mật khẩu cũ";
+                hasError = true;
+            } else if (mKC.value !== "lopJScoban") {
+                mKCError.textContent = "Mật khẩu cũ không đúng";
+                hasError = true;
+            }
+
+            if (mKM.value === "") {
+                mKMError.textContent = "Chưa nhập mật khẩu mới";
+                hasError = true;
+            } else if (mKM.value.length < 8) {
+                mKMError.textContent = "Mật khẩu mới phải có ít nhất 8 ký tự";
+                hasError = true;
+            }
+
+            if (xNMKm.value === "") {
+                xNMKmError.textContent = "Chưa xác nhận mật khẩu mới";
+                hasError = true;
+            }
+
+            if (gioiTinh.value === "") {
+                gioiTinhError.textContent = "Chưa chọn giới tính";
+                hasError = true;
+            }
+
+            if (!nhanThongBao.checked) {
+                alert("Bạn không chọn nhận thông báo.");
+            }
+
+            var selectedThucAn = Array.from(thucAnRadios).find(radio => radio.checked);
+            if (!selectedThucAn) {
+                thucAnError.textContent = "Chưa chọn món thức ăn yêu thích";
+                hasError = true;
+            }
+
+            if (!hasError) {
+                alert("Đã đổi mật khẩu thành công.");
+            }
+        });
+
+        function isValidEmail(email) {
+            // Basic email validation
+            return email.includes("@") && email.includes(".");
+        }
+    </Script>
+</body>
+</html>

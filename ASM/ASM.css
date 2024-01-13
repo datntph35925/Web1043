@@ -1,0 +1,64 @@
+.navbar>.container-fluid {
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+.banner {
+    margin-top: 3.5em;
+    
+}
+
+.img-bestseller {
+    border-radius: 4%;
+    width: 14em;
+    height: 14em;
+    
+}
+
+.img-banner {
+    height: 40rem;
+}
+
+@media screen and (max-width: 480px) {
+    .img-banner {
+        height: 15rem;
+    }
+
+    .navbar>.container-fluid {
+        margin-left: 1.5em;
+        margin-right: 1.5em;
+    }
+
+    .footer-titel {
+        display: none;
+    }
+
+    /* .img-lienhe {
+        width: 22.5rem;
+        height: 11rem;
+    } */
+}
+
+@media screen and (max-width: 990px) {
+    .footer-titel {
+        display: none;
+    }
+
+    .navbar>.container-fluid {
+        margin-left: 1.5em;
+        margin-right: 1.5em;
+    }
+
+    .img-banner {
+        height: 18rem;
+    }
+
+    .content-contact{
+        padding-left: 1rem;
+    }
+
+    /* .img-lienhe {
+        width: 22.5rem;
+        height: 11rem;
+    } */
+}
